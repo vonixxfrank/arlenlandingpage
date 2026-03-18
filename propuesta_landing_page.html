@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta – Landing Page de Autor</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 60px;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 2px solid #185FA5;
+    padding-bottom: 24px;
+    margin-bottom: 36px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .doc-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #185FA5;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .doc-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0C447C;
+  }
+
+  .doc-sub {
+    font-size: 13px;
+    color: #555;
+    margin-top: 4px;
+  }
+
+  .meta-box {
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .meta-box strong {
+    color: #1a1a1a;
+  }
+
+  /* Sections */
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #185FA5;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 0.5px solid #dde8f4;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: #2a2a2a;
+  }
+
+  /* Deliverables table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+  }
+
+  th {
+    background: #E6F1FB;
+    color: #0C447C;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 9px 14px;
+    text-align: left;
+  }
+
+  td {
+    padding: 9px 14px;
+    border-bottom: 0.5px solid #eee;
+    font-size: 13px;
+    vertical-align: top;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background: #f8fbff;
+  }
+
+  .check {
+    color: #1D9E75;
+    font-weight: 600;
+  }
+
+  /* Price box */
+  .price-box {
+    background: #E6F1FB;
+    border-left: 4px solid #185FA5;
+    border-radius: 4px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .price-item {
+    text-align: center;
+  }
+
+  .price-currency {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #185FA5;
+    margin-bottom: 2px;
+  }
+
+  .price-amount {
+    font-size: 28px;
+    font-weight: 600;
+    color: #0C447C;
+  }
+
+  .price-range {
+    font-size: 12px;
+    color: #555;
+  }
+
+  .price-note {
+    flex: 1;
+    font-size: 12px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    gap: 0;
+    margin-top: 8px;
+  }
+
+  .phase {
+    flex: 1;
+    padding: 12px 16px;
+    background: #f4f8fc;
+    border: 0.5px solid #dde8f4;
+    border-right: none;
+  }
+
+  .phase:first-child { border-radius: 6px 0 0 6px; }
+  .phase:last-child { border-radius: 0 6px 6px 0; border-right: 0.5px solid #dde8f4; }
+
+  .phase-num {
+    font-size: 10px;
+    color: #185FA5;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .phase-name {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 2px 0;
+  }
+
+  .phase-days {
+    font-size: 11px;
+    color: #777;
+  }
+
+  /* Payment */
+  .payment-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .payment-card {
+    flex: 1;
+    background: #f9f9f9;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .payment-pct {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0C447C;
+  }
+
+  .payment-label {
+    font-size: 12px;
+    color: #555;
+    margin-top: 2px;
+  }
+
+  /* Terms */
+  .terms-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .terms-list li {
+    padding: 6px 0;
+    padding-left: 18px;
+    position: relative;
+    font-size: 13px;
+    color: #333;
+    border-bottom: 0.5px solid #f0f0f0;
+  }
+
+  .terms-list li:last-child {
+    border-bottom: none;
+  }
+
+  .terms-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #185FA5;
+    font-weight: 500;
+  }
+
+  /* Signature */
+  .signature-block {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+  }
+
+  .sig-col {
+    flex: 1;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .sig-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-top: 6px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 0.5px solid #ddd;
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  @media print {
+    body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .page { padding: 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="doc-label">Propuesta comercial</div>
+        <div class="doc-title">Landing Page de Autor</div>
+        <div class="doc-sub">Sitio web para venta directa de libros</div>
+      </div>
+      <div class="meta-box">
+        <div><strong>Fecha:</strong> [Fecha de envío]</div>
+        <div><strong>Propuesta N.º:</strong> 001</div>
+        <div><strong>Válida hasta:</strong> 30 días</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Introducción -->
+  <div class="section">
+    <div class="section-title">Descripción del proyecto</div>
+    <p>
+      Esta propuesta cubre el desarrollo de una <strong>landing page profesional</strong> orientada a la venta directa de libros digitales (ebooks en PDF), sin depender de plataformas como Amazon. El objetivo es que la autora pueda vender sus obras de forma independiente, recibir los pagos directamente en su cuenta y construir su propia base de lectores.
+    </p>
+    <p>
+      El sitio incluirá vitrina de libros, pasarela de pago integrada, entrega automática del archivo tras la compra y formulario de suscripción para newsletter.
+    </p>
+  </div>
+
+  <!-- Entregables -->
+  <div class="section">
+    <div class="section-title">Entregables incluidos</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 40%">Funcionalidad</th>
+          <th>Descripción</th>
+          <th style="width: 10%; text-align:center;">Incluido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Landing page responsive</strong></td>
+          <td>Diseño adaptado a móvil, tablet y escritorio. Una sola página con secciones: presentación, catálogo, sobre la autora y contacto.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Vitrina de libros (hasta 5)</strong></td>
+          <td>Cada libro con portada, descripción, precio y botón de compra.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Pasarela de pago</strong></td>
+          <td>Integración con Stripe o PayPal. El dinero llega directamente a la cuenta de la autora.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Entrega automática del ebook</strong></td>
+          <td>Tras confirmar el pago, el comprador recibe el PDF por correo electrónico de forma automática.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Formulario de newsletter</strong></td>
+          <td>Integración con Mailchimp o Brevo para capturar suscriptores y enviar novedades.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+        <tr>
+          <td><strong>SEO básico y analíticas</strong></td>
+          <td>Configuración de metaetiquetas, Google Analytics y velocidad de carga optimizada.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+        <tr>
+          <td><strong>Soporte post-lanzamiento</strong></td>
+          <td>14 días de soporte para correcciones y ajustes menores tras la publicación.</td>
+          <td class="check" style="text-align:center;">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Inversión -->
+  <div class="section">
+    <div class="section-title">Inversión</div>
+    <div class="price-box">
+      <div class="price-item">
+        <div class="price-currency">Euros (€)</div>
+        <div class="price-amount">500 – 900</div>
+        <div class="price-range">pago único</div>
+      </div>
+      <div class="price-item">
+        <div class="price-currency">Reales (R$)</div>
+        <div class="price-amount">3.000 – 5.400</div>
+        <div class="price-range">pago único</div>
+      </div>
+      <div class="price-note">
+        El rango depende del nivel de personalización visual y complejidad del diseño final acordado. El precio exacto se confirma tras la reunión de briefing inicial.<br><br>
+        <em>Costos recurrentes no incluidos: hosting (~€10/mes), dominio (~€12/año), comisión Stripe (2,9% + €0,30 por venta).</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plazos -->
+  <div class="section">
+    <div class="section-title">Plazos estimados</div>
+    <div class="timeline">
+      <div class="phase">
+        <div class="phase-num">Fase 1</div>
+        <div class="phase-name">Briefing y diseño</div>
+        <div class="phase-days">3–5 días</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Fase 2</div>
+        <div class="phase-name">Desarrollo</div>
+        <div class="phase-days">5–7 días</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Fase 3</div>
+        <div class="phase-name">Revisiones</div>
+        <div class="phase-days">2–3 días</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">Fase 4</div>
+        <div class="phase-name">Lanzamiento</div>
+        <div class="phase-days">1 día</div>
+      </div>
+    </div>
+    <p style="margin-top: 10px; font-size: 12px; color: #666;">
+      Plazo total estimado: <strong>2–3 semanas</strong> desde la aprobación de la propuesta y el pago del anticipo.
+    </p>
+  </div>
+
+  <!-- Condiciones de pago -->
+  <div class="section">
+    <div class="section-title">Condiciones de pago</div>
+    <div class="payment-row">
+      <div class="payment-card">
+        <div class="payment-pct">50%</div>
+        <div class="payment-label">Al inicio del proyecto</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-pct">50%</div>
+        <div class="payment-label">Al entregar el sitio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Términos -->
+  <div class="section">
+    <div class="section-title">Términos y condiciones</div>
+    <ul class="terms-list">
+      <li>Se incluyen hasta <strong>2 rondas de revisiones</strong> en diseño. Cambios adicionales se cotizan por separado.</li>
+      <li>El cliente debe proveer textos, imágenes de portada y archivos PDF de los libros antes de iniciar el desarrollo.</li>
+      <li>El dominio y el hosting son contratados y pagados directamente por el cliente.</li>
+      <li>La propuesta es válida por <strong>30 días</strong> desde la fecha de emisión.</li>
+      <li>Una vez entregado el proyecto, el cliente es dueño completo del código y los contenidos.</li>
+    </ul>
+  </div>
+
+  <!-- Firma -->
+  <div class="signature-block">
+    <div class="sig-col">
+      <div>Elaborado por</div>
+      <div class="sig-name">[Tu nombre / empresa]</div>
+      <div style="font-size: 12px; color: #999; margin-top: 4px;">[Tu correo · Tu teléfono]</div>
+    </div>
+    <div class="sig-col">
+      <div>Aprobado por</div>
+      <div class="sig-name">[Nombre del cliente]</div>
+      <div style="font-size: 12px; color: #999; margin-top: 4px;">Fecha: _______________</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Propuesta confidencial · Generada para uso exclusivo del destinatario
+  </div>
+
+</div>
+</body>
+</html>
