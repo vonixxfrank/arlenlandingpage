@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EurekaE · Propuesta Landing Page de Autor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>EurekaE · Propuesta responsive · Landing Page Autor</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -14,47 +14,74 @@
     font-size: 15px;
     color: #1e1e2a;
     background: linear-gradient(145deg, #fef9f0 0%, #ffffff 70%);
-    line-height: 1.6;
-  }
-
-  .page {
-    max-width: 820px;
-    margin: 30px auto;
-    padding: 50px 60px;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(2px);
-    border-radius: 36px 36px 32px 32px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(245, 127, 60, 0.1);
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   /* === COLORES EUREKA · ATARDECER NARANJA === */
   :root {
     --eureka-sunset: #F57F3C;      /* naranja atardecer principal */
-    --eureka-glow: #FFB347;         /* naranja más suave / resplandor */
-    --eureka-deep: #C94A1C;         /* naranja profundo para acentos */
-    --eureka-soft: #FFE8D4;         /* fondo sutil para tarjetas */
+    --eureka-glow: #FFB347;         /* naranja suave / resplandor */
+    --eureka-deep: #C94A1C;         /* naranja profundo acentos */
+    --eureka-soft: #FFE8D4;         /* fondo sutil */
     --eureka-light: #FFF2E5;        /* fondo muy claro */
-    --eureka-contrast: #1E2B3A;      /* azul petróleo para textos de fuerza */
+    --eureka-contrast: #1E2B3A;      /* azul petróleo para textos */
   }
 
-  /* Header con acento degradado */
+  .page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: clamp(24px, 6vw, 60px);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(2px);
+    border-radius: clamp(24px, 5vw, 48px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(245, 127, 60, 0.1);
+  }
+
+  /* === HEADER 100% RESPONSIVE === */
   .header {
     border-bottom: 3px solid transparent;
     border-image: linear-gradient(to right, var(--eureka-sunset), var(--eureka-glow)) 1;
-    padding-bottom: 24px;
-    margin-bottom: 36px;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
     background: linear-gradient(to right, rgba(245,127,60,0.02), transparent);
     border-radius: 0 0 20px 20px;
   }
 
   .header-top {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .header-top > div:first-child {
+    flex: 2 1 260px;
+  }
+
+  .meta-box {
+    text-align: left;
+    font-size: 13px;
+    color: #3e3e4a;
+    background: var(--eureka-light);
+    padding: 12px 18px;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(245,127,60,0.1);
+    line-height: 1.7;
+    border: 1px solid rgba(245,127,60,0.2);
+    width: fit-content;
+    margin-left: auto;
   }
 
   .doc-label {
-    font-size: 12px;
+    font-size: clamp(11px, 3vw, 13px);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     background: linear-gradient(135deg, var(--eureka-sunset), var(--eureka-deep));
@@ -62,71 +89,76 @@
     background-clip: text;
     color: transparent;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .doc-title {
-    font-size: 32px;
+    font-size: clamp(24px, 7vw, 38px);
     font-weight: 700;
     background: linear-gradient(145deg, #C94A1C, #F57F3C);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     line-height: 1.2;
+    word-break: break-word;
   }
 
   .doc-sub {
-    font-size: 15px;
+    font-size: clamp(13px, 4vw, 16px);
     color: #4a4a5a;
-    margin-top: 6px;
-    font-weight: 400;
+    margin-top: 4px;
   }
 
-  .meta-box {
-    text-align: right;
-    font-size: 13px;
-    color: #3e3e4a;
-    background: var(--eureka-light);
-    padding: 12px 18px;
-    border-radius: 60px;
-    box-shadow: 0 4px 8px rgba(245,127,60,0.1);
-    line-height: 1.8;
-    border: 1px solid rgba(245,127,60,0.2);
+  /* meta-box responsivo */
+  @media (max-width: 550px) {
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .meta-box {
+      margin-left: 0;
+      width: 100%;
+      text-align: left;
+    }
   }
 
-  .meta-box strong {
-    color: var(--eureka-deep);
-    font-weight: 600;
-  }
-
-  /* section titles con glow naranja */
+  /* section titles */
   .section-title {
-    font-size: 12px;
+    font-size: clamp(11px, 3vw, 13px);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--eureka-deep);
     font-weight: 700;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
     border-bottom: 2px solid rgba(245,127,60,0.2);
     display: inline-block;
     background: rgba(255,180,71,0.1);
-    padding-right: 24px;
+    padding-right: 20px;
     border-radius: 0 0 20px 0;
   }
 
   p {
     margin-bottom: 16px;
     color: #2d2d3a;
-    font-size: 15px;
+    font-size: clamp(14px, 4vw, 16px);
+    word-wrap: break-word;
   }
 
-  /* Tabla con detalles visuales */
+  /* === TABLA 100% ADAPTABLE === */
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 12px 0;
+    border-radius: 24px;
+    -webkit-overflow-scrolling: touch;
+  }
+
   table {
     width: 100%;
+    min-width: 500px;  /* permite scroll en pantallas muy pequeñas, pero sigue siendo usable */
     border-collapse: separate;
     border-spacing: 0;
-    margin-top: 12px;
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 10px 20px -10px rgba(245,127,60,0.2);
@@ -140,50 +172,45 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 12px 18px;
+    padding: 12px 14px;
     text-align: left;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    white-space: nowrap;
   }
 
   td {
-    padding: 14px 18px;
+    padding: 12px 14px;
     border-bottom: 1px solid rgba(245,127,60,0.1);
     font-size: 14px;
     vertical-align: top;
     background: white;
   }
 
-  tr:last-child td {
-    border-bottom: none;
+  @media (max-width: 580px) {
+    td, th {
+      padding: 10px 10px;
+      font-size: 13px;
+    }
+    td:first-child, th:first-child { padding-left: 12px; }
+    td:last-child, th:last-child { padding-right: 12px; }
   }
 
-  tr:nth-child(even) td {
-    background: #fef8f2;
-  }
-
-  .check {
-    color: var(--eureka-deep);
-    font-weight: 700;
-    font-size: 18px;
-    text-shadow: 0 2px 4px rgba(245,127,60,0.3);
-  }
-
-  /* Price box con degradado atardecer */
+  /* === PRICE BOX FLEXIBLE === */
   .price-box {
     background: linear-gradient(115deg, #FFF2E5, #FFE4D0);
     border-left: 6px solid var(--eureka-sunset);
     border-radius: 28px;
-    padding: 28px 30px;
+    padding: clamp(18px, 4vw, 30px);
     display: flex;
-    gap: 40px;
-    align-items: center;
+    flex-direction: row;
     flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
     box-shadow: 0 20px 30px -12px rgba(245,127,60,0.3);
-    margin-top: 8px;
   }
 
   .price-item {
     text-align: left;
+    flex: 1 1 140px;
   }
 
   .price-currency {
@@ -192,27 +219,26 @@
     text-transform: uppercase;
     color: var(--eureka-deep);
     font-weight: 700;
-    margin-bottom: 4px;
   }
 
   .price-amount {
-    font-size: 36px;
+    font-size: clamp(24px, 6vw, 38px);
     font-weight: 800;
     background: linear-gradient(145deg, #C94A1C, #F57F3C);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    line-height: 1;
+    line-height: 1.2;
+    word-break: break-word;
   }
 
   .price-range {
     font-size: 13px;
     color: #6b4f3c;
-    font-weight: 500;
   }
 
   .price-note {
-    flex: 2;
+    flex: 2 1 260px;
     font-size: 13px;
     color: #2e2b38;
     background: rgba(255,255,255,0.7);
@@ -221,77 +247,72 @@
     border: 1px dashed var(--eureka-sunset);
   }
 
-  .price-note em {
-    color: #C94A1C;
-    font-style: italic;
-    font-weight: 500;
-  }
-
-  /* timeline con colores eureka */
+  /* === TIMELINE responsive (apila en móvil) === */
   .timeline {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0;
     margin-top: 20px;
-    border-radius: 40px;
+    border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 8px 16px -8px rgba(201,74,28,0.25);
     border: 1px solid rgba(245,127,60,0.3);
   }
 
   .phase {
-    flex: 1;
-    padding: 18px 16px;
+    flex: 1 1 150px;
+    padding: 16px 12px;
     background: white;
     border-right: 1px solid rgba(245,127,60,0.2);
-    transition: 0.2s;
+    border-bottom: 1px solid rgba(245,127,60,0.2);
   }
 
   .phase:last-child { border-right: none; }
 
-  .phase:hover {
-    background: #FFF2E5;
+  @media (max-width: 550px) {
+    .timeline {
+      border-radius: 24px;
+    }
+    .phase {
+      flex: 1 1 100%;
+      border-right: none;
+      border-bottom: 1px solid rgba(245,127,60,0.2);
+    }
+    .phase:last-child { border-bottom: none; }
   }
 
+  .phase:hover { background: #FFF2E5; }
   .phase-num {
     font-size: 11px;
     color: var(--eureka-sunset);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
   }
+  .phase-name { font-size: 16px; font-weight: 600; margin: 4px 0; }
+  .phase-days { font-size: 13px; color: #c45d2c; }
 
-  .phase-name {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 6px 0 4px;
-    color: #1E2B3A;
-  }
-
-  .phase-days {
-    font-size: 13px;
-    color: #c45d2c;
-    font-weight: 500;
-  }
-
-  /* payment cards con acento */
+  /* payment row flex */
   .payment-row {
     display: flex;
-    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-top: 16px;
   }
 
   .payment-card {
-    flex: 1;
+    flex: 1 1 180px;
     background: linear-gradient(135deg, #FFFFFF, #FFFAF5);
     border: 1.5px solid rgba(245,127,60,0.3);
     border-radius: 26px;
-    padding: 22px 16px;
+    padding: 20px 16px;
     text-align: center;
     box-shadow: 0 12px 18px -12px #F57F3C;
   }
 
   .payment-pct {
-    font-size: 40px;
+    font-size: clamp(32px, 8vw, 44px);
     font-weight: 800;
     background: linear-gradient(145deg, #C94A1C, #F57F3C);
     -webkit-background-clip: text;
@@ -300,117 +321,95 @@
     line-height: 1;
   }
 
-  .payment-label {
-    font-size: 14px;
-    color: #4a3f38;
-    margin-top: 8px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  /* términos list */
+  /* terms */
   .terms-list {
     list-style: none;
     padding: 0;
   }
-
   .terms-list li {
     padding: 12px 0 12px 28px;
     position: relative;
-    font-size: 14px;
-    color: #1f1f2a;
+    font-size: clamp(13px, 3.8vw, 15px);
     border-bottom: 1px solid rgba(245,127,60,0.15);
+    word-break: break-word;
   }
-
   .terms-list li::before {
     content: "✦";
     position: absolute;
     left: 4px;
     color: var(--eureka-sunset);
-    font-weight: 600;
     font-size: 18px;
   }
 
-  /* signature con elegancia */
+  /* signature responsive */
   .signature-block {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
-    gap: 50px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
     background: #FFF7EF;
-    padding: 28px 32px;
+    padding: clamp(20px, 4vw, 32px);
     border-radius: 32px;
     border: 1px solid rgba(245,127,60,0.2);
   }
 
   .sig-col {
-    flex: 1;
+    flex: 1 1 200px;
     border-top: 2px solid var(--eureka-sunset);
-    padding-top: 16px;
+    padding-top: 14px;
     font-size: 13px;
     color: #594e45;
+    min-width: 180px;
   }
 
   .sig-name {
-    font-size: 18px;
+    font-size: clamp(16px, 4vw, 20px);
     font-weight: 700;
     color: #1E2B3A;
-    margin-top: 8px;
-  }
-
-  .sig-col div:last-child {
-    font-size: 13px;
-    color: #F57F3C;
-    font-weight: 500;
     margin-top: 6px;
+    word-break: break-word;
   }
 
-  /* footer glow */
   .footer {
-    margin-top: 56px;
-    padding-top: 24px;
+    margin-top: 40px;
+    padding-top: 20px;
     border-top: 2px solid transparent;
     border-image: radial-gradient(circle, #F57F3C, #FFD7B5) 1;
     font-size: 12px;
     color: #a57a60;
     text-align: center;
-    font-weight: 500;
-    letter-spacing: 0.02em;
   }
 
-  /* micro-interacciones */
-  .phase, .payment-card, .price-box, table {
-    transition: all 0.2s ease;
-  }
-
-  .payment-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--eureka-sunset);
-  }
-
-  /* ajuste de íconos y check */
-  td .check {
+  .check {
     display: inline-block;
     background: #FFE0CC;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
     text-align: center;
     border-radius: 30px;
     color: #C94A1C;
     font-size: 16px;
+    font-weight: 700;
   }
 
-  @media print {
-    body { background: white; }
-    .page { box-shadow: none; background: white; }
+  /* pequeño ajuste para que el check no se deforme */
+  td:last-child {
+    text-align: center;
+  }
+
+  /* mejorar touch en móvil */
+  .phase, .payment-card, button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Header con ADN Eureka -->
+  <!-- Header -->
   <div class="header">
     <div class="header-top">
       <div>
@@ -426,34 +425,36 @@
     </div>
   </div>
 
-  <!-- intro con acento atardecer -->
+  <!-- intro -->
   <div class="section">
     <div class="section-title">✨ visión del proyecto</div>
-    <p style="font-size: 16px; font-weight: 400; background: rgba(255,180,71,0.05); padding: 14px 18px; border-radius: 30px;">
-      Esta propuesta ha sido diseñada con los <strong>colores EurekaE (naranja atardecer)</strong> para que transmita la calidez y conversión que tu negocio necesita. Desarrollamos una landing page profesional que te permite vender tus ebooks sin intermediarios, con pasarela de pago y entrega automática.
+    <p style="background: rgba(255,180,71,0.05); padding: 14px 18px; border-radius: 30px;">
+      Propuesta diseñada con los <strong>colores EurekaE (naranja atardecer)</strong>. Landing page profesional para vender tus ebooks sin intermediarios, con pasarela de pago y entrega automática.
     </p>
   </div>
 
-  <!-- Entregables con estilo -->
+  <!-- Entregables (contenedor scroll si es necesario) -->
   <div class="section">
     <div class="section-title">🧡 entregables de alto impacto</div>
-    <table>
-      <thead>
-        <tr><th>Funcionalidad</th><th>Descripción premium</th><th style="text-align:center;">Incluido</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Landing page responsiva</strong></td><td>Diseño “mobile-first” con estética Eureka (naranja atardecer) y tipografía limpia. Secciones: hero, catálogo, biografía, contacto.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-        <tr><td><strong>Vitrina dinámica (hasta 5 libros)</strong></td><td>Cada libro con portada animada, sinopsis, precio y botón de compra. Posibilidad de destacar bestsellers.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-        <tr><td><strong>Pasarela de pago (Stripe/PayPal)</strong></td><td>El dinero va directo a tu cuenta. Sin retenciones ni plataformas externas.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-        <tr><td><strong>Entrega automática del ebook</strong></td><td>Email de descarga instantánea con el PDF tras el pago confirmado. Experiencia “compra y lee ya”.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-        <tr><td><strong>Newsletter integrado</strong></td><td>Conexión con Mailchimp/Brevo. Captas suscriptores y construyes comunidad.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-        <tr><td><strong>SEO on-page + analytics</strong></td><td>Metaetiquetas, velocidad optimizada, Google Analytics y pixels de conversión.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-        <tr><td><strong>Soporte post-lanzamiento</strong></td><td>14 días de ajustes menores y acompañamiento. Tu tranquilidad está garantizada.</td><td style="text-align:center;"><span class="check">✓</span></td></tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Funcionalidad</th><th>Descripción premium</th><th>Incluido</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Landing page responsiva</strong></td><td>Diseño mobile-first con estética Eureka (naranja atardecer).</td><td><span class="check">✓</span></td></tr>
+          <tr><td><strong>Vitrina dinámica (hasta 5 libros)</strong></td><td>Portada, sinopsis, precio y botón de compra.</td><td><span class="check">✓</span></td></tr>
+          <tr><td><strong>Pasarela de pago (Stripe/PayPal)</strong></td><td>El dinero va directo a tu cuenta.</td><td><span class="check">✓</span></td></tr>
+          <tr><td><strong>Entrega automática del ebook</strong></td><td>Email con PDF tras pago confirmado.</td><td><span class="check">✓</span></td></tr>
+          <tr><td><strong>Newsletter integrado</strong></td><td>Conexión Mailchimp/Brevo.</td><td><span class="check">✓</span></td></tr>
+          <tr><td><strong>SEO on-page + analytics</strong></td><td>Metaetiquetas, velocidad optimizada, Google Analytics.</td><td><span class="check">✓</span></td></tr>
+          <tr><td><strong>Soporte post-lanzamiento</strong></td><td>14 días de ajustes menores.</td><td><span class="check">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <!-- Inversión con acento de precio atardecer -->
+  <!-- Inversión -->
   <div class="section">
     <div class="section-title">💰 inversión única</div>
     <div class="price-box">
@@ -468,13 +469,13 @@
         <div class="price-range">pagamento único</div>
       </div>
       <div class="price-note">
-        <span style="font-weight:600;">Rango orientativo:</span> 500€ – 1500€ (según nivel de personalización y catálogo).<br>
+        <span style="font-weight:600;">Rango orientativo:</span> 800€ – 1500€ (según personalización).<br>
         <em>Costes externos: hosting ~10€/mes, dominio ~12€/año, comisión Stripe 2,9%+0,30€.</em>
       </div>
     </div>
   </div>
 
-  <!-- Plazos con feeling naranja -->
+  <!-- Plazos -->
   <div class="section">
     <div class="section-title">⏳ cronograma estimado</div>
     <div class="timeline">
@@ -484,18 +485,17 @@
       <div class="phase"><span class="phase-num">Fase 4 · LANZAMIENTO</span><div class="phase-name">Go live!</div><div class="phase-days">1 día</div></div>
     </div>
     <p style="margin-top: 18px; background: #FFE8D4; padding: 12px 20px; border-radius: 40px; color:#A15526;">
-      🚀 <strong>Entrega total: 2-3 semanas</strong> desde la aprobación y anticipo.
+      🚀 <strong>Entrega total: 2-3 semanas</strong> desde aprobación y anticipo.
     </p>
   </div>
 
-  <!-- Condiciones de pago con estilo premium -->
+  <!-- Condiciones de pago -->
   <div class="section">
     <div class="section-title">💸 condiciones flexibles</div>
     <div class="payment-row">
       <div class="payment-card"><div class="payment-pct">50%</div><div class="payment-label">anticipo creativo</div></div>
       <div class="payment-card"><div class="payment-pct">50%</div><div class="payment-label">contra entrega</div></div>
     </div>
-    <p style="font-size:13px; margin-top:10px; color:#f57f3c; text-align:center;">También disponible pago 100% a convenir.</p>
   </div>
 
   <!-- Términos -->
@@ -510,7 +510,7 @@
     </ul>
   </div>
 
-  <!-- Firma con alma Eureka -->
+  <!-- Firma -->
   <div class="signature-block">
     <div class="sig-col">
       <div>Presentado por</div>
